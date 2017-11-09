@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/assets/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/froala_editor.pkgd.min.css">
+
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -8,11 +11,9 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <textarea [froalaEditor] formControlName="formModel" [(froalaModel)]="form.formModel"></textarea>
+    <!--<div [froalaView]="form.formModel"></div>-->
+    <button ion-button color="dark" type="submit">Submit</button>
+  </form>
 </ion-content>
