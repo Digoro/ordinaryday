@@ -16,4 +16,15 @@
     <!--<div [froalaView]="form.formModel"></div>-->
     <button ion-button color="dark" type="submit">Submit</button>
   </form>
+
+  <ion-grid>
+    <input [(ngModel)]="diaries" type="hidden">
+    <ion-row *ngFor="let diary of diaries">
+      <ion-col>{{diary.date | date:'yyyy-MM-dd'}}</ion-col>
+      <ion-col>{{diary.content}}</ion-col>
+      <ion-col><button ion-button color="danger" small (click)="delete(diary)">삭제</button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+
