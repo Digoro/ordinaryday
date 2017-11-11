@@ -12,7 +12,8 @@ export class HomePage {
   form = new FormGroup({
     formModel: new FormControl('', Validators.required),
   });
-
+  private isSubmit = true;
+  private tempDiary;
   diaries = [{
     id: 0,
     date: new Date("2017-11-03"),
@@ -35,14 +36,30 @@ export class HomePage {
   }
 
   onSubmit(event) {
-    this.diaries.push({
-      id: this.diaries.length,
-      date: new Date(),
-      content: this.form.value.formModel
-    })
+    if(this.isSubmit) {
+      this.diaries.push({
+        id: this.diaries.length,
+        date: new Date(),
+        content: this.form.value.formModel
+      })
+    } else {
+      this.isSubmit = true;
+      this.diaries.map(item => {
+        if(item.id == this.tempDiary.id) {
+          item.content = this.form.value.formModel;
+        }
+        return item;
+      })
+    }
   }
 
   delete(diary) {
     this.diaries = this.diaries.filter(item => item !== diary);
+  }
+
+  update(diary) {
+    this.isSubmit = false;
+    this.tempDiary = diary;
+    this.form.controls['formModel'].setValue(diary.content)
   }
 }
