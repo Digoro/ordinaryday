@@ -35,19 +35,9 @@ export class HomePage {
   }
 
   onSubmit(event) {
-    this.diaries.push({
-      id: this.diaries.length,
-      date: new Date().toString(),
-      content: this.form.value.formModel
-    });
-    this.form.value.formModel = '';
   }
 
   delete(diary) {
-    console.log(diary);
-    this.diaries.filter(function (d) {
-      return d.id != diary.id;
-    });
-    console.log(this.diaries)
+
   }
 }
