@@ -35,9 +35,10 @@ export class HomePage {
   }
 
   onSubmit(event) {
+
   }
 
-  delete(diary) {
-
+  delete(diary) {  
+    this.diaries = this.diaries.filter(item => item !== diary);
   }
 }
