@@ -35,10 +35,14 @@ export class HomePage {
   }
 
   onSubmit(event) {
-
+    this.diaries.push({
+      id: this.diaries.length,
+      date: new Date(),
+      content: this.form.value.formModel
+    })
   }
 
-  delete(diary) {  
+  delete(diary) {
     this.diaries = this.diaries.filter(item => item !== diary);
   }
 }
